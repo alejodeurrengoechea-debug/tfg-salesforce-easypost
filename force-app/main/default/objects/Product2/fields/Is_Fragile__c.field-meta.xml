@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Is_Fragile__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Flag para identificar productos delicados que requieren embalaje especial o suplementos de transporte.</description>
+    <inlineHelpText>Marca esta casilla si el producto es frágil y requiere un trato especial en el almacén y el transporte.</inlineHelpText>
+    <label>Is Fragile</label>
+    <trackHistory>false</trackHistory>
+    <type>Checkbox</type>
+</CustomField>

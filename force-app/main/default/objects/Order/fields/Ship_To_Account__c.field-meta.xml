@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Ship_To_Account__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>Cuenta de destino a la que se envía físicamente la mercancía (Ship To), desvinculada de la cuenta principal de facturación.</description>
+    <inlineHelpText>Selecciona la cuenta o sucursal física donde se debe entregar el pedido</inlineHelpText>
+    <label>Ship To Account</label>
+    <referenceTo>Account</referenceTo>
+    <relationshipLabel>Orders</relationshipLabel>
+    <relationshipName>Orders</relationshipName>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

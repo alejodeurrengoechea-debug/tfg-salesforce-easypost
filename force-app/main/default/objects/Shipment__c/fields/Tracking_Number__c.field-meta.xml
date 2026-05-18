@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tracking_Number__c</fullName>
+    <description>Código único de rastreo devuelto por el transportista a través de la API externa.</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Número de tracking asignado por la agencia de transporte para realizar el seguimiento del paquete.</inlineHelpText>
+    <label>Tracking Number</label>
+    <length>100</length>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

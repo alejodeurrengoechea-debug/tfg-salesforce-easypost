@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Facility_Code__c</fullName>
+    <caseSensitive>false</caseSensitive>
+    <description>Identificador único del almacén para sincronizar inventarios e indicar a la API el punto de origen del envío.</description>
+    <externalId>true</externalId>
+    <inlineHelpText>Código externo e inequívoco de la localización para integraciones de sistemas.</inlineHelpText>
+    <label>Facility Code</label>
+    <length>50</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>true</unique>
+</CustomField>

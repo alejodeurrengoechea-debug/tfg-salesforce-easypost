@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Label_URL__c</fullName>
+    <description>Enlace directo al servidor externo para descargar e imprimir la etiqueta del paquete en formato ZPL o PDF.</description>
+    <inlineHelpText>Enlace oficial de la etiqueta de envío lista para su impresión en el muelle de carga.</inlineHelpText>
+    <label>Label URL</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Url</type>
+</CustomField>
