@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>Distance_Unit__c</field>
+        <value xsi:type="xsd:string">cm</value>
+    </values>
+    <values>
+        <field>Mass_Unit__c</field>
+        <value xsi:type="xsd:string">kg</value>
+    </values>
+    <values>
+        <field>Origin_City__c</field>
+        <value xsi:type="xsd:string">San Francisco</value>
+    </values>
+    <values>
+        <field>Origin_Country__c</field>
+        <value xsi:type="xsd:string">US</value>
+    </values>
+    <values>
+        <field>Origin_Email__c</field>
+        <value xsi:type="xsd:string">logistics@tfg.com</value>
+    </values>
+    <values>
+        <field>Origin_Name__c</field>
+        <value xsi:type="xsd:string">TFG Logistics Test</value>
+    </values>
+    <values>
+        <field>Origin_Phone__c</field>
+        <value xsi:type="xsd:string">5551234567</value>
+    </values>
+    <values>
+        <field>Origin_State__c</field>
+        <value xsi:type="xsd:string">CA</value>
+    </values>
+    <values>
+        <field>Origin_Street__c</field>
+        <value xsi:type="xsd:string">215 Clayton St</value>
+    </values>
+    <values>
+        <field>Origin_Zip__c</field>
+        <value xsi:type="xsd:string">94117</value>
+    </values>
+</CustomMetadata>

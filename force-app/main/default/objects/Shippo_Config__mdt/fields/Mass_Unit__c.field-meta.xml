@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mass_Unit__c</fullName>
+    <label>Mass Unit</label>
+    <type>Text</type>
+    <length>10</length>
+    <description>Unidad de masa utilizada en el payload de Shippo (ej. kg).</description>
+</CustomField>
