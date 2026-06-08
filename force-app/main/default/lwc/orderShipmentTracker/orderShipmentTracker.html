@@ -1,0 +1,100 @@
+<template>
+    <lightning-card title="Shipment Tracker" icon-name="standard:shipment">
+        <div class="slds-var-p-around_medium">
+
+            <!-- Estado de carga -->
+            <template lwc:if={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+            </template>
+
+            <!-- Sin envío creado -->
+            <template lwc:elseif={isEmpty}>
+                <div class="slds-align_absolute-center slds-var-p-around_large">
+                    <div class="slds-text-align_center">
+                        <lightning-icon icon-name="utility:clock" size="large" variant="warning"></lightning-icon>
+                        <p class="slds-var-m-top_small slds-text-color_weak">
+                            No shipment has been created for this order yet.
+                        </p>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Datos del envío -->
+            <template lwc:elseif={hasShipment}>
+
+                <!-- Información principal -->
+                <div class="slds-grid slds-gutters slds-var-m-bottom_medium">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-form-element">
+                            <span class="slds-form-element__label slds-text-color_weak">Carrier</span>
+                            <div class="slds-form-element__control">
+                                <lightning-badge label={shipment.carrier}></lightning-badge>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-form-element">
+                            <span class="slds-form-element__label slds-text-color_weak">Tracking Number</span>
+                            <div class="slds-form-element__control">
+                                <span class="slds-text-body_regular">{shipment.trackingNumber}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón etiqueta -->
+                <template lwc:if={shipment.labelUrl}>
+                    <div class="slds-var-m-bottom_medium">
+                        <lightning-button
+                            label="Print Label"
+                            icon-name="utility:download"
+                            onclick={handlePrintLabel}
+                            variant="brand">
+                        </lightning-button>
+                    </div>
+                </template>
+
+                <!-- Historial de eventos -->
+                <template lwc:if={hasTrackingEvents}>
+                    <h3 class="slds-section__title slds-theme_shade slds-var-p-around_x-small slds-var-m-bottom_small">
+                        <span class="slds-truncate">Tracking History</span>
+                    </h3>
+                    <ul class="slds-timeline">
+                        <template for:each={shipment.trackingEvents} for:item="event">
+                            <li key={event.statusCode} class="slds-timeline__item">
+                                <div class="slds-media slds-media_timeline slds-timeline__media_task">
+                                    <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                                        <lightning-icon
+                                            icon-name="utility:check"
+                                            size="x-small"
+                                            variant="success">
+                                        </lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <div class="slds-grid slds-grid_align-spread">
+                                            <span class="slds-text-body_regular slds-text-color_default">
+                                                {event.statusCode}
+                                            </span>
+                                            <span class="slds-text-body_small slds-text-color_weak">
+                                                {event.formattedDate}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </template>
+
+            </template>
+
+            <!-- Error -->
+            <template lwc:if={error}>
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span>{error}</span>
+                </div>
+            </template>
+
+        </div>
+    </lightning-card>
+</template>
