@@ -10,6 +10,7 @@
             <objects>
                 <object>Order</object>
             </objects>
+            <property name="logisticsStatus" type="String" label="Logistics Status Field" />
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>

@@ -1,4 +1,6 @@
 import { LightningElement, api, wire } from "lwc";
+import { getRecord, getFieldValue } from "lightning/uiRecordApi";
+import LOGISTICS_STATUS_FIELD from "@salesforce/schema/Order.Logistics_Status__c";
 import getShipmentData from "@salesforce/apex/OrderShipmentTrackerController.getShipmentData";
 
 const STATUS_ICON_MAP = {
@@ -27,12 +29,28 @@ const CARRIER_TRACKING_URL = {
     CORREOS: "https://www.correos.es/es/es/herramientas/localizador/envios/detalle?tracking-number=",
 };
 
+const EMPTY_STATE_MESSAGES = {
+    'Draft':         'This order is still in draft. Activate it and set it to Ready to Ship to create a shipment.',
+    'Ready to Ship': 'The shipment is being processed. It will appear here shortly.',
+    'Cancelled':     'This order has been cancelled. No shipment will be created.',
+    'default':       'No shipment has been created for this order yet.',
+};
+
 export default class OrderShipmentTracker extends LightningElement {
     @api recordId;
+    @api logisticsStatus; // Mantenida por compatibilidad con App Builder
 
     shipment;
     error;
     isLoading = true;
+    orderRecord;
+
+    @wire(getRecord, { recordId: "$recordId", fields: [LOGISTICS_STATUS_FIELD] })
+    wiredOrder({ data, error }) {
+        if (data) {
+            this.orderRecord = data;
+        }
+    }
 
     @wire(getShipmentData, { orderId: "$recordId" })
     wiredShipment({ data, error }) {
@@ -94,6 +112,13 @@ export default class OrderShipmentTracker extends LightningElement {
         }
         const baseUrl = CARRIER_TRACKING_URL[this.shipment.carrier.toUpperCase()];
         return baseUrl ? `${baseUrl}${this.shipment.trackingNumber}` : null;
+    }
+
+    get emptyStateMessage() {
+        const status = this.orderRecord
+            ? getFieldValue(this.orderRecord, LOGISTICS_STATUS_FIELD)
+            : null;
+        return EMPTY_STATE_MESSAGES[status] || EMPTY_STATE_MESSAGES['default'];
     }
 
     handlePrintLabel() {
