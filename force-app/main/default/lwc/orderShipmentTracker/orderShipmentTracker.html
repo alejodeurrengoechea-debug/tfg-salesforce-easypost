@@ -36,11 +36,28 @@
                         <div class="slds-form-element">
                             <span class="slds-form-element__label slds-text-color_weak">Tracking Number</span>
                             <div class="slds-form-element__control">
-                                <span class="slds-text-body_regular">{shipment.trackingNumber}</span>
+                                <template lwc:if={trackingUrl}>
+                                    <a href={trackingUrl} target="_blank" class="slds-text-body_regular">
+                                        {shipment.trackingNumber}
+                                    </a>
+                                </template>
+                                <template lwc:else>
+                                    <span class="slds-text-body_regular">{shipment.trackingNumber}</span>
+                                </template>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Badge estado actual -->
+                <template lwc:if={currentStatus}>
+                    <div class="slds-var-m-bottom_medium">
+                        <span class="slds-form-element__label slds-text-color_weak">Current Status</span>
+                        <div class="slds-var-m-top_xx-small">
+                            <span class={currentStatusCssClass}>{currentStatus.statusCode}</span>
+                        </div>
+                    </div>
+                </template>
 
                 <!-- Botón etiqueta -->
                 <template lwc:if={shipment.labelUrl}>
@@ -65,7 +82,7 @@
                                 <div class="slds-media slds-media_timeline slds-timeline__media_task">
                                     <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
                                         <lightning-icon
-                                            icon-name="utility:check"
+                                            icon-name={event.icon}
                                             size="x-small"
                                             variant="success">
                                         </lightning-icon>
